@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -28,7 +29,7 @@ public interface HotelApi {
     @RequestMapping(value = "/hotel",
             produces = {MediaType.APPLICATION_JSON_VALUE},
             method = RequestMethod.GET)
-    ResponseEntity<List<Hotel>> hotelGet();
+    ResponseEntity<List<Hotel>> hotelGet(@RequestParam(defaultValue = "0") int pageNo, @RequestParam int pageSize);
 
 
     @ApiOperation(value = "Add a new hotel", nickname = "hotelPost", notes = "", response = Hotel.class, tags = {"Hotel",})

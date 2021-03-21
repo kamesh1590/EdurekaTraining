@@ -23,10 +23,9 @@ public class HotelApiController implements HotelApi {
         this.hotelService = hotelService;
     }
 
-
     @Override
-    public ResponseEntity<List<Hotel>> hotelGet() {
-        return ResponseEntity.ok().body(hotelService.fetchAll());
+    public ResponseEntity<List<Hotel>> hotelGet(int pageNo, int pageSize) {
+        return ResponseEntity.ok().body(hotelService.fetchAll(pageNo, pageSize));
     }
 
     @Override
